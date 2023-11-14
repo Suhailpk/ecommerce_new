@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<style>
+    .portfolio-image {
+    max-width: 100%;
+    max-height: 100%;
+    }
+</style>
+<!-- ======= Portfolio Section ======= -->
+<section id="portfolio" class="portfolio">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Portfolio</h2>
+        <h3>Check our <span>Portfolio</span></h3>
+        <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p>
+      </div>
+
+      <div class="row portfolio-container">
+
+        {% for product in products %}
+          <div class="col-lg-4 col-md-6 portfolio-item filter-{{ product.category }}">
+            <img src="{{ product.image.url }}" class="img-fluid portfolio-image" alt="{{ product.name }}">
+            <div class="portfolio-info">
+              <h4>{{ product.name }}</h4>
+              <a href="{{ product.image.url }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="{{ product.name }}"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+        {% endfor %}
+
+      </div>
+
+    </div>
+  </section><!-- End Portfolio Section -->
+
+{% endblock content %}
